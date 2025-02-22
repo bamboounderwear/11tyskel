@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: Portfolio
+---
+
+<div class="content-container">
+  <h1>Portfolio</h1>
+  <div class="portfolio-grid">
+    {%- for project in collections.portfolio | reverse -%}
+      <article class="portfolio-item">
+        <h2><a href="{{ project.url }}">{{ project.data.title }}</a></h2>
+        <div class="project-meta">
+          <p class="client">Client: {{ project.data.client }}</p>
+          <p class="date">Date: {{ project.data.date | date }}</p>
+        </div>
+        <div class="project-excerpt">
+          {{ project.templateContent | excerpt | safe }}
+        </div>
+        <a href="{{ project.url }}" class="read-more">View Project →</a>
+      </article>
+    {%- endfor -%}
+  </div>
+</div>
